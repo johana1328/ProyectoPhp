@@ -11,6 +11,7 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
       $_SESSION['nombres'] =  $user['nombres'];
       $_SESSION['tipo'] =  $user['tipo'];
       $_SESSION['ente'] =  $user['ente'];
+      $_SESSION['documento'] =  $user['documento'];
       header('Location: index.php');
     }else{
       header('Location: login.php?status=error');

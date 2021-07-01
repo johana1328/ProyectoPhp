@@ -17,15 +17,15 @@
 <body>
 
 	<div class="card">
-		<div class="card-header">Modificar Enciclopedia Medica</div>
+		<div class="card-header">Modificar cita</div>
 		<div class="card-body">
 		<?php
-		  $mensaje="";
-		  $nombre=$data['enciclopedia']['nombre'];
-            $descripcion=$data['enciclopedia']['descripcion'];
-            $sintomas=$data['enciclopedia']['sintomas'];
-            $recomendaciones=$data['enciclopedia']['recomendaciones'];
-			$id=$data['enciclopedia']['id'];
+		   $mensaje="";
+		   $id=$data['cita']['id'];
+		   $especialista=$data['cita']['especialista'];
+           $fecha=$data['cita']['fecha'];
+           $hora=$data['cita']['hora'];
+           $usuario=$data['cita']['usuario'];
 
 		if(array_key_exists("msgkO", $data)){
 		    $mensaje=$data['msgkO'];
@@ -43,34 +43,37 @@
 
 			<form action="modificar" method="post">
 			<div class="form-group row">
-					<label for="staticEmail" class="col-sm-2 col-form-label">Id</label>
+					<label class="col-sm-2 col-form-label" for="tipo">Especialista</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="id" value="<?php echo $id ?>"
-							 placeholder="Id" readonly>
+						<select class="form-control" name="especialista"  id="espcialista">
+						<?php 
+						 foreach ($data['especialistas'] as $especialista) {
+							 echo '<option value="'.$especialista['documento'].'">'.$especialista['especialidad'].' '.$especialista['nombre'].'</option>';
+						 }
+						?>
+					</select>
 					</div>
 				</div>
 			<div class="form-group row">
-					<label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
+					<label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="nombre" value="<?php echo $nombre ?>"
-							 placeholder="Nombre">
+						<input type="date" class="form-control" name="fecha" value="<?php echo $fecha ?>"
+							>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
+					<label for="staticEmail" class="col-sm-2 col-form-label">Hora</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="descripcion" value=""
-							 placeholder="Descripción"><?php echo $descripcion ?></textarea>
+						<input type="time" class="form-control" name="hora" value="<?php echo $hora ?>">
 					</div>
 				</div>
-				<div class="form-group">
-    				<label for="exampleFormControlTextarea1">Sintomas</label>
-    				<textarea class="form-control"name="sintomas" value=""rows="3"><?php echo $sintomas ?></textarea>
-  				</div>
-				  <div class="form-group">
-    				<label for="exampleFormControlTextarea1">Recomendaciones</label>
-    				<textarea class="form-control" name="recomendaciones" value="" rows="3"><?php echo $recomendaciones ?></textarea>
-  				</div>
+				<?php
+					session_start();
+					$documentoUsuario= $_SESSION['documento'];
+				?>
+				<input type="hidden" name="usuario" value="<?php echo $documentoUsuario ?>">
+				<input type="hidden" name="id" value="<?php echo $id ?>">
+				
 				<div class="clearfix">
 					<a class="btn btn-primary float-left" href="listar" role="button">Cancelar</a>
 					<button type="submit" class="btn btn-primary float-right">Guardar</button>
