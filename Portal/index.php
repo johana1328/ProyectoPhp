@@ -79,8 +79,17 @@
                   Enciclopedia Medica
                 </a>
               </li>
-              <?php } ?>
+              <?php } 
+                 if($tipoUsuario=='NORMAL'){}
+              ?>
               
+              <li class="nav-item">
+                <a class="nav-link" onclick="redirect('Views/cita/listar');return false;" href="#">
+                  <span data-feather="file-text"></span>
+                  Citas
+                </a>
+              </li>
+              <?php } ?>
             </ul>
           </div>
         </nav>

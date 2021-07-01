@@ -20,6 +20,7 @@ class EnciclopediaController extends BaseController
     
     public function crear() {
         $encicloModel= new EnciclopediaMedicaModel();
+    
         $enciclopedia=[
             "nombre"=>$this->getRequestsParam("nombre"),
             "descripcion"=>$this->getRequestsParam("descripcion"),
@@ -27,6 +28,7 @@ class EnciclopediaController extends BaseController
             "recomendaciones"=>$this->getRequestsParam("recomendaciones"),
         ];
         $encicloModel->crearEnciclopedia($enciclopedia);
+        
         $data=$encicloModel->listarEnciclopedia();
         $this->render("Enciclopedia/listar", [ "enciclopedias" => $data, "msgOk"=>"Dato Creada"]);
 
@@ -45,7 +47,7 @@ class EnciclopediaController extends BaseController
     public function eliminar(){
         $encicloModel= new EnciclopediaMedicaModel();
         $id=$this->getRequestsParam("id");
-        $encicloModel->eliminarEnte($id);
+        $encicloModel->eliminarEnciclo($id);
         $data=$encicloModel->listarEnciclopedia();
         $this->render("Enciclopedia/listar", [ "enciclopedias" => $data, "msgOk"=>"Dato eliminado"]);
     }
@@ -53,10 +55,12 @@ class EnciclopediaController extends BaseController
     public function modificar(){
         $encicloModel= new EnciclopediaMedicaModel();
         $enciclopedia=[
+
             "nombre"=>$this->getRequestsParam("nombre"),
             "descripcion"=>$this->getRequestsParam("descripcion"),
             "sintomas"=>$this->getRequestsParam("sintomas"),
             "recomendaciones"=>$this->getRequestsParam("recomendaciones"),
+            "id"=>$this->getRequestsParam("id"),
         ];
 
         $encicloModel->modificarEnciclo($enciclopedia);
@@ -80,10 +84,10 @@ class EnciclopediaController extends BaseController
         }
         if($vista=='modificar'){
             $id=$this->getRequestsParam("id");
-            $encicloModel= new EnteSaludModel();
+            $encicloModel= new EnciclopediaMedicaModel();
             $enciclopedia=$encicloModel->buscarEnciclo($id);
            
-            $this->render('Enciclopedia/modificar',["enciclopedias"=>$enciclopedia]);
+            $this->render('Enciclopedia/modificar',["enciclopedia"=>$enciclopedia]);
         }
     }
     
