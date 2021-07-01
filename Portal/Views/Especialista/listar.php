@@ -50,8 +50,10 @@
 				</thead>
 				<tbody>
  <?php
- 
+   session_start();
+   $enteS= $_SESSION['ente'];
 foreach ($data['especialistas'] as $especialista) {
+  if($enteS == 'NA' ||  $enteS == $especialista['ente']){ 
     echo "<tr>";
     echo "<th scope='row'>" . $especialista['documento'] . "</th>";
     echo "<td>" . $especialista['nombre'] . "</td>";
@@ -73,6 +75,7 @@ foreach ($data['especialistas'] as $especialista) {
            </svg>
          </a>
          </td>';
+  }
 }
 ?>
   </tbody>

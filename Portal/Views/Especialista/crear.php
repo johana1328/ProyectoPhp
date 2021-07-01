@@ -110,7 +110,11 @@
 							 placeholder="Celular">
 					</div>
 				</div>
-
+				<?php
+					session_start();
+					$enteS= $_SESSION['ente'];
+						if($enteS == 'NA'){ 
+				?>
 				<div class="form-group row">
 					<label class="col-sm-2 col-form-label" for="tipo">Ente de salud</label>
 					<div class="col-sm-10">
@@ -123,6 +127,10 @@
 					</select>
 					</div>
 				</div>
+				<?php } else{
+					echo '<input type="hidden"  name="ente" value="'.$enteS.'">';
+				}?>
+				
 				<div class="form-group row">
 					<label class="col-sm-2 col-form-label" for="tipo">Tipo</label>
 					<div class="col-sm-10">
