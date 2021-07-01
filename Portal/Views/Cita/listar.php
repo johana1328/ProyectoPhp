@@ -34,7 +34,7 @@
 			
 
 			<div class="float-right pb-2">
-				<a href="redirecionar?vista=crear" class="btn btn-primary">Enciclopedia Medica</a>
+				<a href="redirecionar?vista=crear" class="btn btn-primary">Agendar Cita</a>
 			</div>
 			<table class="table">
 				<thead class="thead-dark">

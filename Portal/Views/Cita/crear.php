@@ -46,6 +46,17 @@
 
 			<form action="crear" method="post">
 			<div class="form-group row">
+					<label class="col-sm-2 col-form-label" for="tipo">Especialista</label>
+					<div class="col-sm-10">
+						<select class="form-control" name="especialista"  id="espcialista">
+						<?php 
+						 foreach ($data['espcialistas'] as $especialista) {
+							 echo '<option value="'.$especialista['documento'].'">'.$especialista['especialidad'].'</option>';
+						 }
+						?>
+					</select>
+					</div>
+			<div class="form-group row">
 					<label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
 					<div class="col-sm-10">
 						<input type="date" class="form-control" name="fecha" value="<?php echo $fecha ?>"
@@ -55,18 +66,11 @@
 				<div class="form-group row">
 					<label for="staticEmail" class="col-sm-2 col-form-label">Hora</label>
 					<div class="col-sm-10">
-						<textarea type="time" class="form-control" name="hora" value="<?php echo $hora ?>"
-							 placeholder="Descripción"></textarea>
+						<input type="time" class="form-control" name="hora" value="<?php echo $hora ?>">
 					</div>
 				</div>
-				<div class="form-group">
-    				<label for="exampleFormControlTextarea1">Usuario</label>
-    				<textarea class="form-control"name="sintomas" value="<?php echo $sintomas ?>"rows="3"></textarea>
-  				</div>
-				  <div class="form-group">
-    				<label for="exampleFormControlTextarea1">Recomendaciones</label>
-    				<textarea class="form-control" name="recomendaciones" value="<?php echo $recomendaciones ?>" rows="3"></textarea>
-  				</div>
+				
+						 
 					
 				<div class="clearfix">
 					<a class="btn btn-primary float-left" href="listar" role="button">Cancelar</a>
