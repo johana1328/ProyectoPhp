@@ -6,18 +6,18 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="Mario Mendez Martinez">
-<title>Actividad 2</title>
+<title>RVS</title>
 <link href="public/css/bootstrap.min.css" rel="stylesheet">
 <link href="public/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Red vallecaucana de salud</a>
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+          <a class="nav-link" href="#">Salir</a>
         </li>
       </ul>
     </nav>
@@ -36,7 +36,7 @@
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
+              <span>Menu</span>
               <a class="d-flex align-items-center text-muted" href="#">
                 <span data-feather="plus-circle"></span>
               </a>
@@ -51,7 +51,7 @@
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/ente/listar');return false;" href="#">
                   <span data-feather="file-text"></span>
-                  Entes de Salus
+                  Entes de salud
                 </a>
               </li>
               <li class="nav-item">
