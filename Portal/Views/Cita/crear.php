@@ -17,21 +17,19 @@
 <body>
 
 	<div class="card">
-		<div class="card-header">Enciclopedia Medica</div>
+		<div class="card-header">Agendar cita</div>
 		<div class="card-body">
 		
 		 <?php 
-		 $nombre="";
-		 $descripcion="";
-		 $sintomas="";
-		 $recomendaciones="";
+		 $especialista="";
+		 $fecha="";
+		 $hora="";
 
         if(array_key_exists("msgkO", $data)){
             $mensaje=$data['msgkO'];
-            $nombre=$data['enciclopedia']['nombre'];
-            $descripcion=$data['enciclopedia']['descripcion'];
-            $sintomas=$data['enciclopedia']['sintomas'];
-            $recomendaciones=$data['enciclopedia']['recomendaciones'];
+            $especialista=$data['cita']['especialista'];
+            $fecha=$data['cita']['fecha'];
+            $hora=$data['cita']['hora'];
 
             echo <<<EOT
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">

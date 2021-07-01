@@ -66,6 +66,12 @@
                   Enciclopedia Medica
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="redirect('Views/cita/listar');return false;" href="#">
+                  <span data-feather="file-text"></span>
+                  Citas
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
