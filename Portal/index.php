@@ -80,7 +80,7 @@
                 </a>
               </li>
               <?php } 
-                 if($tipoUsuario=='NORMAL'){}
+                 if($tipoUsuario=='NORMAL'){
               ?>
               
               <li class="nav-item">
