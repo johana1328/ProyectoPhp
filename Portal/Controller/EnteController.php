@@ -53,7 +53,7 @@ class EnteController extends BaseController
         $nit=$this->getRequestsParam("nit");
         $enteModel->eliminarEnte($nit);
         $data=$enteModel->listarEntes();
-        $this->render("Ente/listar", [ "entes" => $data, "msgOk"=>"Usuario eliminado"]);
+        $this->render("Ente/listar", [ "entes" => $data, "msgOk"=>"Ente de salud eliminado"]);
     }
     
     public function modificar(){
@@ -72,7 +72,7 @@ class EnteController extends BaseController
 
         $enteModel->modificarEnte($ente);
         $data=$enteModel->listarEntes();
-        $this->render("Ente/listar", [ "entes" => $data, "msgOk"=>"Entes de salud modificados"]);
+        $this->render("Ente/listar", [ "entes" => $data, "msgOk"=>"Ente de salud modificados"]);
 
        /* $msg=$this->validarFormularioUsuario($usuario);
         if($msg == "OK"){
