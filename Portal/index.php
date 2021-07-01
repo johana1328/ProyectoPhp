@@ -60,6 +60,12 @@
                   Especialistas
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="redirect('Views/enciclopedia/listar');return false;" href="#">
+                  <span data-feather="file-text"></span>
+                  Enciclopedia Medica
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
