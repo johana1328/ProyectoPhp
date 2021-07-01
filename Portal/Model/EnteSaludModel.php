@@ -17,9 +17,10 @@ class EnteSaludModel extends BaseModel
             $query->bindParam(6, $ente['web']);
             $query->bindParam(7, $ente['ciudad']); 
             $query->bindParam(8, $ente['capacidad']); 
-            $query->bindParam(8, $ente['usuario']); 
+            $query->bindParam(9, $ente['usuario']); 
             $query->execute();
         } catch (Exception $ex) {
+            echo $ex;
             throw $ex;
         }finally {
             $cnn = null;

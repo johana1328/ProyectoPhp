@@ -104,7 +104,7 @@
 				<div class="form-group row">
 					<label class="col-sm-2 col-form-label" for="tipo">Usuario</label>
 					<div class="col-sm-10">
-						<select class="form-control" name="ente"  id="ente">
+						<select class="form-control" name="usuario"  id="usuario">
 						<?php 
 						 foreach ($data['usuarios'] as $usuario) {
 							 echo '<option value="'.$usuario['documento'].'">'.$usuario['nombres'].'</option>';
