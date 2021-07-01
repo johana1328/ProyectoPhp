@@ -1,4 +1,8 @@
-
+<?php 
+  session_start();
+  session_destroy();
+  session_unset();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,14 +35,14 @@
 			      			<h3 class="mb-4">Iniciar Sesion</h3>
 			      		</div>
 			      	</div>
-					<form action="./loginproceso.php" class="signin-form" method="POST">
+					<form action="controlsesion.php" class="signin-form" method="POST">
 			      		<div class="form-group mb-3">
 			      			<label class="label" for="name">Usuario</label>
-			      			<input type="text" class="form-control" name="txtUsu" placeholder="Numero Cedula" required>
+			      			<input type="text" class="form-control" name="usuario" placeholder="Numero Cedula" required>
 			      		</div>
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Contraseña</label>
-		              <input type="password" class="form-control" name="txtPass" placeholder="Contraseña" required>
+		              <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
 		            </div>
 		            <div class="form-group">
 		            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>

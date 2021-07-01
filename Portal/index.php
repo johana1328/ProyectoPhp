@@ -1,3 +1,9 @@
+<?php 
+   session_start();
+   if (!isset($_SESSION['nombres'])) {
+       header('Location: login.php');
+   }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,7 +23,7 @@
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Salir</a>
+          <a class="nav-link" href="login.php">Salir</a>
         </li>
       </ul>
     </nav>
@@ -30,7 +36,7 @@
               <li class="nav-item">
                 <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                  <?php echo $_SESSION['nombres']; ?> <span class="sr-only">(<?php echo $_SESSION['tipo']; ?>)</span>
                 </a>
               </li>
             </ul>
@@ -42,6 +48,8 @@
               </a>
             </h6>
             <ul class="nav flex-column mb-2">
+            <?php $tipoUsuario= $_SESSION['tipo'];
+             if($tipoUsuario=='ADMIN'){ ?>
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/usuario/listar');return false;" href="#">
                   <span data-feather="file-text"></span>
@@ -54,24 +62,34 @@
                   Entes de salud
                 </a>
               </li>
+              <?php } 
+                 if($tipoUsuario=='ADMIN' || $tipoUsuario=='CONTENIDO'){
+                    ?>
+              
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/especialista/listar');return false;" href="#">
                   <span data-feather="file-text"></span>
                   Especialistas
                 </a>
               </li>
+             
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/enciclopedia/listar');return false;" href="#">
                   <span data-feather="file-text"></span>
                   Enciclopedia Medica
                 </a>
               </li>
+              <?php } 
+                 if($tipoUsuario=='NORMAL'){
+              ?>
+              
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/cita/listar');return false;" href="#">
                   <span data-feather="file-text"></span>
                   Citas
                 </a>
               </li>
+              <?php } ?>
             </ul>
           </div>
         </nav>
