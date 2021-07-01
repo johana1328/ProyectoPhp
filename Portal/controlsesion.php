@@ -27,9 +27,9 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
     $usuario['password']= $_POST['password']; 
     $usuario['tipo']='NORMAL';
     crearUsuario($usuario);
-    header('Location: login.php');
+    header('Location: ../login.php');
   }else{
-    header('Location: login.php');
+    header('Location: ../login.php');
     session_destroy();
   }
 

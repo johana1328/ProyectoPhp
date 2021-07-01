@@ -15,6 +15,7 @@
 <title>RVS</title>
 <link href="public/css/bootstrap.min.css" rel="stylesheet">
 <link href="public/css/dashboard.css" rel="stylesheet">
+<link rel="stylesheet" href="public/fontawesome-free/css/all.min.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="login.php">Salir</a>
+          <a class="btn btn-primary" href="../login.php">Salir</a>
         </li>
       </ul>
     </nav>
@@ -52,13 +53,13 @@
              if($tipoUsuario=='ADMIN'){ ?>
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/usuario/listar');return false;" href="#">
-                  <span data-feather="file-text"></span>
+                  <span data-feather="file-text"></span><i class="fas fa-users"></i>
                   Usuarios
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/ente/listar');return false;" href="#">
-                  <span data-feather="file-text"></span>
+                  <span data-feather="file-text"></span><i class="fas fa-briefcase"></i>
                   Entes de salud
                 </a>
               </li>
@@ -68,14 +69,14 @@
               
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/especialista/listar');return false;" href="#">
-                  <span data-feather="file-text"></span>
+                  <span data-feather="file-text"></span><i class="fas fa-user-tie"></i>
                   Especialistas
                 </a>
               </li>
              
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/enciclopedia/listar');return false;" href="#">
-                  <span data-feather="file-text"></span>
+                  <span data-feather="file-text"></span><i class="fas fa-book-medical"></i>
                   Enciclopedia Medica
                 </a>
               </li>
@@ -85,7 +86,7 @@
               
               <li class="nav-item">
                 <a class="nav-link" onclick="redirect('Views/cita/listar');return false;" href="#">
-                  <span data-feather="file-text"></span>
+                  <span data-feather="file-text"></span> <i class="far fa-circle nav-icon"></i>
                   Citas
                 </a>
               </li>
@@ -93,6 +94,7 @@
             </ul>
           </div>
         </nav>
+        
 
 	< <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 		<form action="" id="redirect" target="iframaAction"></form>

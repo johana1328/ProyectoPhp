@@ -83,7 +83,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 col-form-label" for="tipo">Example select</label>
+					<label class="col-sm-2 col-form-label" for="tipo">Tipo Usuario</label>
 					<div class="col-sm-10">
 						<select class="form-control" name="tipo"  id="tipo">
 						<option value="ADMIN">Administrador</option>
