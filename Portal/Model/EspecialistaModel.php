@@ -8,7 +8,7 @@ class EspecialistaModel extends BaseModel
     {
         try {
             $cnn=$this->getConexion();
-            $query = $cnn->prepare(" INSERT INTO CentroMedico.especialista VALUES(?,?, ?, ?, ?, ?, ?, ?, ?)");
+            $query = $cnn->prepare(" INSERT INTO CentroMedico.especialista VALUES(?,?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $query->bindParam(1, $especialista['documento']);
             $query->bindParam(2, $especialista['especialidad']);
             $query->bindParam(3, $especialista['ciudad']);
@@ -18,6 +18,7 @@ class EspecialistaModel extends BaseModel
             $query->bindParam(7, $especialista['nombre']); 
             $query->bindParam(8, $especialista['correo']); 
             $query->bindParam(9, $especialista['celular']); 
+            $query->bindParam(10, $especialista['ente']); 
             $query->execute();
         } catch (Exception $ex) {
             throw $ex;
@@ -30,7 +31,7 @@ class EspecialistaModel extends BaseModel
     {
         $cnn = $this->getConexion();
         try {
-        $listaEspecialista = 'SELECT * FROM CentroMedico.especialista';
+        $listaEspecialista = 'SELECT *, e.razonsocial FROM CentroMedico.especialista es inner join CentroMedico.enteSalud e on e.nit = es.ente ';
         $query = $cnn->prepare($listaEspecialista);
         $query->execute();
         return $query->fetchAll();
@@ -60,7 +61,7 @@ class EspecialistaModel extends BaseModel
         try {
             $cnn=$this->getConexion();
             $query = $cnn->prepare(" UPDATE CentroMedico.especialista
-            SET especialidad=?, ciudad=?, licencia=?, fechaExpedicion=?, tipo=?, nombre=?, correo=?, celular=?
+            SET especialidad=?, ciudad=?, licencia=?, fechaExpedicion=?, tipo=?, nombre=?, correo=?, celular=?, ente=?
             WHERE documento=?");
             $query->bindParam(1, $especialista['especialidad']);
             $query->bindParam(2, $especialista['ciudad']);
@@ -70,7 +71,8 @@ class EspecialistaModel extends BaseModel
             $query->bindParam(6, $especialista['nombre']); 
             $query->bindParam(7, $especialista['correo']); 
             $query->bindParam(8, $especialista['celular']);  
-            $query->bindParam(9, $especialista['documento']);
+            $query->bindParam(9, $especialista['ente']); 
+            $query->bindParam(10, $especialista['documento']);
             $query->execute();
         } catch (Exception $ex) {
             throw $ex;

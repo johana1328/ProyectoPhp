@@ -30,6 +30,7 @@
 		  $nombre=$data['especialista']['nombre'];
 		  $correo=$data['especialista']['correo'];
 		  $celular=$data['especialista']['celular'];
+		  $ente=$data['especialista']['ente'];
 
 		if(array_key_exists("msgkO", $data)){
 		    $mensaje=$data['msgkO'];
@@ -100,6 +101,23 @@
 					<div class="col-sm-10">
 						<input type="mail" class="form-control" name="celular" value="<?php echo $celular ?>"
 							 placeholder="Celular">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" for="tipo">Ente de salud</label>
+					<div class="col-sm-10">
+						<select class="form-control" name="ente"  id="ente">
+						<?php 
+						 foreach ($data['entes'] as $enteL) {
+							 if($enteL['nit']==$ente){
+								echo '<option value="'.$enteL['nit'].'" selected="selected">'.$enteL['razonsocial'].'</option>';
+							 }else{
+								echo '<option value="'.$enteL['nit'].'">'.$enteL['razonsocial'].'</option>';
+							 }
+							
+						 }
+						?>
+					</select>
 					</div>
 				</div>
 				<div class="form-group row">

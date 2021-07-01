@@ -38,6 +38,22 @@ class UsuarioModel extends BaseModel
             $cnn = null;
         }
     }
+
+
+    public function ListarUsuariosContenido()
+    {
+        $cnn = $this->getConexion();
+        try {
+        $listarUsuarios = "SELECT * FROM CentroMedico.usuario where tipo = 'CONTENIDO'";
+        $query = $cnn->prepare($listarUsuarios);
+        $query->execute();
+        return $query->fetchAll();
+        } catch (Exception $ex) {
+            throw $ex;
+        }finally {
+            $cnn = null;
+        }
+    }
     
     
     public function eliminarUsuario($documento) {

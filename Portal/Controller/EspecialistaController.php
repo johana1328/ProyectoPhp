@@ -2,6 +2,7 @@
 <?php
 require_once '../Core/BaseController.php';
 require_once '../Model/EspecialistaModel.php';
+require_once '../Model/EnteSaludModel.php';
 
 class EspecialistaController extends BaseController
 {
@@ -29,7 +30,9 @@ class EspecialistaController extends BaseController
             "tipo"=>$this->getRequestsParam("tipo"),
             "nombre"=>$this->getRequestsParam("nombre") ,
             "correo"=>$this->getRequestsParam("correo"),
-            "celular"=>$this->getRequestsParam("celular")
+            "celular"=>$this->getRequestsParam("celular"),
+            "ente"=>$this->getRequestsParam("ente")
+            
         ];
         $especialistaModel->crearEspecialista($especialista);
         $data=$especialistaModel->listarEspecialistas();
@@ -66,7 +69,8 @@ class EspecialistaController extends BaseController
             "tipo"=>$this->getRequestsParam("tipo"),
             "nombre"=>$this->getRequestsParam("nombre") ,
             "correo"=>$this->getRequestsParam("correo"),
-            "celular"=>$this->getRequestsParam("celular")
+            "celular"=>$this->getRequestsParam("celular"),
+            "ente"=>$this->getRequestsParam("ente")
         ];
 
         $especialistaModel->modificarEspecialista($especialista);
@@ -86,14 +90,18 @@ class EspecialistaController extends BaseController
     public function redirecionar() {
         $vista=$this->getRequestsParam("vista");
         if($vista=="crear"){
-            $this->render('Especialista/crear', array());
+            $enteModel= new EnteSaludModel();
+           $data=$enteModel->listarEntes();
+           $this->render('Especialista/crear', [ "entes" => $data]);
         }
         if($vista=='modificar'){
             $documento=$this->getRequestsParam("documento");
             $especialistaModel= new EspecialistaModel();
             $especialista=$especialistaModel->buscarEspecialista($documento);
-           
-            $this->render('Especialista/modificar',["especialista"=>$especialista]);
+            $enteModel= new EnteSaludModel();
+            $data=$enteModel->listarEntes();
+            $this->render('Especialista/modificar',["especialista"=>$especialista,
+            "entes" => $data]);
         }
     }
     
