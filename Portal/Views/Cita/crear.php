@@ -24,12 +24,14 @@
 		 $especialista="";
 		 $fecha="";
 		 $hora="";
+		 $usuario ="";
 
         if(array_key_exists("msgkO", $data)){
             $mensaje=$data['msgkO'];
             $especialista=$data['cita']['especialista'];
             $fecha=$data['cita']['fecha'];
             $hora=$data['cita']['hora'];
+			$usuario=$usuario['cita']['usuario'];
 
             echo <<<EOT
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -44,21 +46,21 @@
 
 			<form action="crear" method="post">
 			<div class="form-group row">
-					<label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
+					<label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="nombre" value="<?php echo $nombre ?>"
-							 placeholder="Nombre">
+						<input type="date" class="form-control" name="fecha" value="<?php echo $fecha ?>"
+							>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
+					<label for="staticEmail" class="col-sm-2 col-form-label">Hora</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" name="descripcion" value="<?php echo $descripcion ?>"
+						<textarea type="time" class="form-control" name="hora" value="<?php echo $hora ?>"
 							 placeholder="Descripción"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
-    				<label for="exampleFormControlTextarea1">Sintomas</label>
+    				<label for="exampleFormControlTextarea1">Usuario</label>
     				<textarea class="form-control"name="sintomas" value="<?php echo $sintomas ?>"rows="3"></textarea>
   				</div>
 				  <div class="form-group">
