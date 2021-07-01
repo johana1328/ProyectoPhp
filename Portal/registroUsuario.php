@@ -31,7 +31,8 @@
 			      			<h3 class="mb-4">Registro</h3>
 			      		</div>
 			      	</div>
-					<form action="" class="signin-form" method="POST">
+					<form action="controlsesion.php" class="signin-form" method="POST">
+					<input type="hidden" name="registro" value="OK">
                     <div class="form-group mb-3 ">
 			      			<label class="label" for="name">Cedula</label>
 			      			<input type="text" class="form-control" name="documento" placeholder="Cedula" required>
@@ -43,15 +44,15 @@
 			      		</div>
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Apellidos</label>
-		              <input type="text" class="form-control" name="txtPass" placeholder="Apellidos" required>
+		              <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" required>
 		            </div>
                     <div class="form-group mb-3">
 		            	<label class="label" for="password">Correo Electronico</label>
-		              <input type="email" class="form-control" name="correoElectromico" placeholder="Correo Electronico" required>
+		              <input type="email" class="form-control" name="correoElectronico" placeholder="Correo Electronico" required>
 		            </div>
 			      		<div class="form-group mb-3 ">
 			      			<label class="label" for="name">Celular</label>
-			      			<input type="text" class="form-control" name="telefono" placeholder="Celular" required>
+			      			<input type="text" class="form-control" name="celular" placeholder="Celular" required>
 			      		</div>
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Contraseña</label>
