@@ -1,22 +1,3 @@
-<?php
-require_once 'Core/Conexion.php';
- function listarEnciclopedia()
- {
-  $cnn = Conexion::getConexion();
-     try {
-     $listaEnciclo = 'SELECT * FROM CentroMedico.enciclopediaMedica';
-     $query = $cnn->prepare($listaEnciclo);
-     $query->execute();
-     return $query->fetchAll();
-     } catch (Exception $ex) {
-         throw $ex;
-     }finally {
-         $cnn = null;
-     }
- }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,63 +62,82 @@ require_once 'Core/Conexion.php';
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="login.php" class="appointment-btn scrollto">Inicio Sesión</a>
+      <a href="login.php" class="appointment-btn scrollto">Inicio Sesion</a>
 
     </div>
   </header><!-- End Header -->
-    <br><br><br><br><br>
-  <main id="main">
-      <br>
-  
-  <center>
-    <h1>Enfermedades</h1>
-    <div class="container">
-    <table class="table table-striped" id="tabla">
-        <thead>
-            <tr class="text-center">
-                <th>Nombre Enfermedad</th>
-                <th>Descripción</th>
-                <th>Sintomas</th>
-                <th>Recomendaciones</th>
+<br><br><br><br><br>
 
-            </tr>
-        </thead>
-    <tbody>
-        <?php
-        
-            foreach (listarEnciclopedia() as $enciclopedia) {
-        ?>
+  <main id="main mt-150px">
+  <section id="appointment" class="appointment section-bg">
+      <div class="container">
 
-            <tr>
-                <td><?php echo $enciclopedia['nombre'];?></td>
-                <td><?php echo $enciclopedia['descripcion']?></td>
-                <td><?php echo $enciclopedia['sintomas'];?></td>
-                <td><?php echo $enciclopedia['recomendaciones'];?></td>
-                
-            </tr>
+        <div class="section-title">
+            <h1 class="text-center">Dejanos tus inquietudes</h1>
+        </div>
+
+        <form action="../Plantilla/Controladores/controlador.pqrs.php" method="post" role="form">
+          <div class="form-row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="Nombre" class="form-control"  placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-6 form-group">
+              <input type="text" class="form-control" name="Asunto"  placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter a valid email">
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="Mensaje" rows="5" placeholder="Mensaje (Opcional)"></textarea>
+            <div class="validate"></div>
+          </div>
+          <label for="" class="form-label">Nivel de calificacion</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Calificacion" value="Muy Bueno">
+            <label>
+              Muy Bueno
+            </label>
+            </input>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Calificacion" value="Bueno">
+            <label>
+            Bueno
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Calificacion" value="Malo">
+            <label>
+              Malo
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Calificacion" value="Malo">
+            <label>
+              Muy Malo
+            </label>
+          </div>
+          <center>
+              <input type="submit" name="registro" id="registro" value="Enviar" class="btn btn-primary">
+            </center>
+        </form>
+        <div class="col-md-4"></div>
         <?php
-            }
-        ?>
-        </table>
-    </tbody>
-</center>
-    <?php
         if (isset($_GET['mensaje'])) {
-    ?>   
-    <div class="row"><br><br>
-        <div class="col-md-6"></div>
-        <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje']?></h4></div>
-        <div class="col-md-5"></div>
-    </div>
-    <?php
+        ?>   
+        <div class="row"><br><br>
+                <div class="col-md-6">
+                <div class="col-md-6 text-center alert alert-success" role="alert"><h4><?php echo $mensaje = $_GET['mensaje'] ?>
+                </h4></div>
+                </div>
+            <div class="col-md-5"></div>
+        </div> 
+        <?php
         }
-    ?>
-
-    
+        ?>
+      </div>
+    </section>
   </main>
-
-        <br><br>
-
+  
   <footer id="footer">
 
     <div class="container d-md-flex py-4">
@@ -182,18 +182,3 @@ require_once 'Core/Conexion.php';
   <script src="public/assets/js/main.js"></script>
 </body>
 </html>
-<style>
-    body{
-        background-image: url("img/fondo4.jpg");
-        background-position: center center;
-    }
-    #tabla{
-        background: white;
-        border-radius: 12px;
-    }
-    #btn2{
-        border-color: white;
-        border-width: 3px;
-    }
-    
-</style>

@@ -1,4 +1,5 @@
 <?php
+
 require_once '../Core/BaseModel.php';
 
 class EnciclopediaMedicaModel extends BaseModel
