@@ -44,6 +44,7 @@
 						<th scope="col">Especialidad</th>
 						<th scope="col">Licencia</th>
 						<th scope="col">Ente Salud</th>
+            <th scope="col">Tipo</th>
 						<th scope="col">Acciones</th>
 					</tr>
 				</thead>
@@ -56,6 +57,7 @@ foreach ($data['especialistas'] as $especialista) {
     echo "<td>" . $especialista['nombre'] . "</td>";
     echo "<td>" . $especialista['especialidad'] . "</td>";
     echo "<td>" . $especialista['licencia'] . "</td>";
+    echo "<td>" . $especialista['razonsocial'] . "</td>";
     echo "<td>" . $especialista['tipo'] . "</td>";
     echo '<td>
           <a href="eliminar?documento=' . $especialista['documento'] . '" >

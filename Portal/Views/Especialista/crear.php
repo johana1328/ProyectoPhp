@@ -110,6 +110,19 @@
 							 placeholder="Celular">
 					</div>
 				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" for="tipo">Ente de salud</label>
+					<div class="col-sm-10">
+						<select class="form-control" name="ente"  id="ente">
+						<?php 
+						 foreach ($data['entes'] as $ente) {
+							 echo '<option value="'.$ente['nit'].'">'.$ente['razonsocial'].'</option>';
+						 }
+						?>
+					</select>
+					</div>
+				</div>
 				<div class="form-group row">
 					<label class="col-sm-2 col-form-label" for="tipo">Tipo</label>
 					<div class="col-sm-10">

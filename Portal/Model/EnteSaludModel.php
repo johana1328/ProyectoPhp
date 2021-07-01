@@ -8,7 +8,7 @@ class EnteSaludModel extends BaseModel
     {
         try {
             $cnn=$this->getConexion();
-            $query = $cnn->prepare(" INSERT INTO CentroMedico.enteSalud VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+            $query = $cnn->prepare(" INSERT INTO CentroMedico.enteSalud VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $query->bindParam(1, $ente['nit']);
             $query->bindParam(2, $ente['razonsocial']);
             $query->bindParam(3, $ente['representanteLegal']);
@@ -17,6 +17,7 @@ class EnteSaludModel extends BaseModel
             $query->bindParam(6, $ente['web']);
             $query->bindParam(7, $ente['ciudad']); 
             $query->bindParam(8, $ente['capacidad']); 
+            $query->bindParam(8, $ente['usuario']); 
             $query->execute();
         } catch (Exception $ex) {
             throw $ex;
@@ -57,7 +58,7 @@ class EnteSaludModel extends BaseModel
     public function modificarEnte($ente) {
         try {
             $cnn=$this->getConexion();
-            $query = $cnn->prepare(" UPDATE CentroMedico.enteSalud SET razonsocial=?, representanteLegal=?, correoElectronico=?, telefono=?, web=?, ciudad=?, capacidad=? WHERE nit=?");
+            $query = $cnn->prepare(" UPDATE CentroMedico.enteSalud SET razonsocial=?, representanteLegal=?, correoElectronico=?, telefono=?, web=?, ciudad=?, capacidad=?, usuario=? WHERE nit=?");
             $query->bindParam(1, $ente['razonsocial']);
             $query->bindParam(2, $ente['representanteLegal']);
             $query->bindParam(3, $ente['correoElectronico']);
@@ -65,7 +66,8 @@ class EnteSaludModel extends BaseModel
             $query->bindParam(5, $ente['web']);
             $query->bindParam(6, $ente['ciudad']); 
             $query->bindParam(7, $ente['capacidad']); 
-            $query->bindParam(8, $ente['nit']);
+            $query->bindParam(8, $ente['usuario']); 
+            $query->bindParam(9, $ente['nit']);
             $query->execute();
         } catch (Exception $ex) {
             throw $ex;

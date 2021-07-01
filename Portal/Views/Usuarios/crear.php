@@ -86,9 +86,9 @@
 					<label class="col-sm-2 col-form-label" for="tipo">Example select</label>
 					<div class="col-sm-10">
 						<select class="form-control" name="tipo"  id="tipo">
-						<option>Administrador</option>
-						<option>Contenido</option>
-						<option>Normal</option>
+						<option value="ADMIN">Administrador</option>
+						<option value="CONTENIDO">Contenido</option>
+						<option value="NORMAL">Normal</option>
 					</select>
 					</div>
 				</div>

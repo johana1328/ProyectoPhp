@@ -2,6 +2,7 @@
 <?php
 require_once '../Core/BaseController.php';
 require_once '../Model/EnteSaludModel.php';
+require_once '../Model/UsuarioModel.php';
 
 class EnteController extends BaseController
 {
@@ -28,7 +29,8 @@ class EnteController extends BaseController
             "telefono"=>$this->getRequestsParam("telefono"),
             "web"=>$this->getRequestsParam("web"),
             "ciudad"=>$this->getRequestsParam("ciudad") ,
-            "capacidad"=>$this->getRequestsParam("capacidad")   
+            "capacidad"=>$this->getRequestsParam("capacidad") ,
+            "usuario"=>$this->getRequestsParam("usuario")      
         ];
         $enteModel->crearEnte($ente);
         $data=$enteModel->listarEntes();
@@ -64,7 +66,8 @@ class EnteController extends BaseController
             "telefono"=>$this->getRequestsParam("telefono"),
             "web"=>$this->getRequestsParam("web"),
             "ciudad"=>$this->getRequestsParam("ciudad") ,
-            "capacidad"=>$this->getRequestsParam("capacidad")   
+            "capacidad"=>$this->getRequestsParam("capacidad"),
+            "usuario"=>$this->getRequestsParam("usuario")    
         ];
 
         $enteModel->modificarEnte($ente);
@@ -84,14 +87,17 @@ class EnteController extends BaseController
     public function redirecionar() {
         $vista=$this->getRequestsParam("vista");
         if($vista=="crear"){
-            $this->render('Ente/crear', array());
+            $usuarioModel= new UsuarioModel();
+            $data=$usuarioModel->ListarUsuariosContenido();
+            $this->render('Ente/crear',[ "usuarios" => $data]);
         }
         if($vista=='modificar'){
             $nit=$this->getRequestsParam("nit");
             $enteModel= new EnteSaludModel();
             $ente=$enteModel->buscarEnte($nit);
-           
-            $this->render('Ente/modificar',["ente"=>$ente]);
+            $usuarioModel= new UsuarioModel();
+            $data=$usuarioModel->ListarUsuariosContenido();
+            $this->render('Ente/modificar',["ente"=>$ente,  "usuarios" => $data]);
         }
     }
     
