@@ -50,12 +50,13 @@
 					<div class="col-sm-10">
 						<select class="form-control" name="especialista"  id="espcialista">
 						<?php 
-						 foreach ($data['espcialistas'] as $especialista) {
-							 echo '<option value="'.$especialista['documento'].'">'.$especialista['especialidad'].'</option>';
+						 foreach ($data['especialistas'] as $especialista) {
+							 echo '<option value="'.$especialista['documento'].'">'.$especialista['especialidad'].' '.$especialista['nombre'].'</option>';
 						 }
 						?>
 					</select>
 					</div>
+				</div>
 			<div class="form-group row">
 					<label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
 					<div class="col-sm-10">
@@ -69,9 +70,11 @@
 						<input type="time" class="form-control" name="hora" value="<?php echo $hora ?>">
 					</div>
 				</div>
-				
-						 
-					
+				<?php
+					session_start();
+					$documentoUsuario= $_SESSION['documento'];
+				?>
+				<input type="hidden" name="usuario" value="<?php echo $documentoUsuario ?>">
 				<div class="clearfix">
 					<a class="btn btn-primary float-left" href="listar" role="button">Cancelar</a>
 					<button type="submit" class="btn btn-primary float-right">Guardar</button>

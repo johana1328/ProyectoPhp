@@ -23,7 +23,7 @@ class CitaModel extends BaseModel{
     {
         $cnn = $this->getConexion();
         try {
-        $listaCita = ("SELECT e.especialidad, ci.fecha ,ci.hora FROM cita ci INNER JOIN especialista e ON ci.especialista = e.documento ");
+        $listaCita = ("SELECT e.especialidad, ci.fecha ,ci.hora, ci.id FROM cita ci INNER JOIN especialista e ON ci.especialista = e.documento ");
         $query = $cnn->prepare($listaCita);
         $query->execute();
         return $query->fetchAll();
@@ -50,13 +50,13 @@ class CitaModel extends BaseModel{
     public function modificarCita($cita) {
         try {
             $cnn=$this->getConexion();
-            $query = $cnn->prepare(" UPDATE CentroMedico.cita SET fecha=?, hora=?, especialista=?, usuario=? WHERE id=?;");
+            $query = $cnn->prepare(" UPDATE CentroMedico.cita SET fecha=?, hora=?, especialista=?, usuario=? WHERE id=?");
 
-            $query->bindParam(1, $enciclopedia['fecha']);
-            $query->bindParam(2, $enciclopedia['hora']);
-            $query->bindParam(3, $enciclopedia['especialista']);
-            $query->bindParam(4, $enciclopedia['usuario']);
-            $query->bindParam(5, $enciclopedia['id']);
+            $query->bindParam(1, $cita['fecha']);
+            $query->bindParam(2, $cita['hora']);
+            $query->bindParam(3, $cita['especialista']);
+            $query->bindParam(4, $cita['usuario']);
+            $query->bindParam(5, $cita['id']);
             $query->execute();
         } catch (Exception $ex) {
             throw $ex;
